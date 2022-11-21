@@ -1,0 +1,1575 @@
+{
+    "title": "AAAAA KE Configuration, by Ysq",
+    "url": "https://github.com/yeshiqing/KE-configuration/ke-ysq.json",
+    "json_url": "https://github.com/yeshiqing/KE-configuration/ke-ysq.json",
+    "maintainers": [
+        "Jeffrey"
+    ],
+    "author": "Jeffrey(jeffreyye@qq.com)",
+    "version": "0.0.1",
+    "website": "-http://capslock.vonng.com",
+    "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://github.com/yeshiqing/KE-configuration/ke-ysq.json",
+    "gallery_url": "-https://ke-complex-modifications.pqrs.org/#emulation-modes",
+    "repo": "https://github.com/yeshiqing/KE-configuration",
+    "homepage": "https://github.com/yeshiqing/KE-configuration",
+    "official_repo": "https://github.com/pqrs-org/KE-complex_modifications",
+    "rules": [
+        {
+            "description": "Forward Delete and Backspace [ysq]",
+            "manipulators": [
+                {
+                    "description": "equal + delete = forward_delete ",
+                    "type": "basic",
+                    "from": {
+                        "simultaneous": [
+                            {
+                                "key_code": "equal_sign"
+                            },
+                            {
+                                "key_code": "delete_or_backspace"
+                            }
+                        ]
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_forward"
+                        }
+                    ]
+                },
+                {
+                    "description": "command + equal + delete = delete rest of line",
+                    "type": "basic",
+                    "from": {
+                        "simultaneous": [
+                            {
+                                "key_code": "equal_sign"
+                            },
+                            {
+                                "key_code": "delete_or_backspace"
+                            }
+                        ],
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "k",
+                            "modifiers": [
+                                "left_control"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "option + equal + delete = delete a word after",
+                    "type": "basic",
+                    "from": {
+                        "simultaneous": [
+                            {
+                                "key_code": "equal_sign"
+                            },
+                            {
+                                "key_code": "delete_or_backspace"
+                            }
+                        ],
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_forward",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Switch Input Source [ysq]",
+            "manipulators": [
+                {
+                    "description": "Tap Command_L (⌘) → Switch input source to English  |  短按左 Command (⌘) → 切换到英文输入法",
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "input_sources": [
+                                {
+                                    "language": "en"
+                                }
+                            ],
+                            "type": "input_source_unless"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "left_command",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_command",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "spacebar",
+                            "modifiers": "right_control"
+                        }
+                    ],
+                    "to_if_held_down": [
+                        {
+                            "key_code": "left_command"
+                        }
+                    ]
+                },
+                {
+                    "description": "Tap Command_L (⌘) → Switch input source to English  |  短按左 Command (⌘) → 切换到英文输入法",
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "input_sources": [
+                                {
+                                    "language": "zh-Hans"
+                                }
+                            ],
+                            "type": "input_source_unless"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "right_command",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_command",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "spacebar",
+                            "modifiers": "right_control"
+                        }
+                    ],
+                    "to_if_held_down": [
+                        {
+                            "key_code": "right_command"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Semicolon Pull Down Symbol [ysq]",
+            "manipulators": [
+                {
+                    "description": "semicolon = ;(click) | hyperFn(hold)",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "fn",
+                            "modifiers": [
+                                "right_command",
+                                "right_control",
+                                "right_option"
+                            ]
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "semicolon"
+                        }
+                    ],
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 400
+                    }
+                },
+                {
+                    "description": "; + caps_lock = `",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde"
+                        }
+                    ]
+                },
+                {
+                    "description": "; + ` = ~",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "grave_accent_and_tilde",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 1 = !",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "1",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "1",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 2 = @",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "2",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "2",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 3 = #",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "3",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "3",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 4 = $",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "4",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "4",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 5 = %",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "5",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "5",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 6 = ^",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "6",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "6",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 7 = &",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "7",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "7",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + 8 = *",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "8",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "8",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + q = (",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "q",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "9",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + w = )",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "0",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + e = [",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket"
+                        }
+                    ]
+                },
+                {
+                    "description": "; + r = ]",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "r",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket"
+                        }
+                    ]
+                },
+                {
+                    "description": "; + a = ?",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "a",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "slash",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + s = <",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "comma",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + d = =",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "equal_sign"
+                        }
+                    ]
+                },
+                {
+                    "description": "; + f = >",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "period",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + g = -",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "g",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "hyphen"
+                        }
+                    ]
+                },
+                {
+                    "description": "; + h = +",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "equal_sign",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + j = {",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + k = }",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + z = \\",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "z",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "backslash"
+                        }
+                    ]
+                },
+                {
+                    "description": "; + x = _",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "x",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ],
+                            "optional": [
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "hyphen",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + c = :",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "c",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "semicolon",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "; + v = |",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "v",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "fn",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "backslash",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "CapsLock to Hyper Override [ysq]",
+            "manipulators": [
+                {
+                    "description": "capslock = esc(click) | hyper(hold) [ysq]",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_shift",
+                            "modifiers": [
+                                "right_command",
+                                "right_control",
+                                "right_option"
+                            ]
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 400
+                    }
+                },
+                {
+                    "description": "escape = capslock switch",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "escape",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+                            ],
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "caps_lock",
+                            "modifiers": [
+                                "left_control"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "command + spacebar = emoji",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "spacebar",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command",
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "spacebar",
+                            "modifiers": [
+                                "left_control",
+                                "left_command"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Launch Apps by f1. f9 f10 f11 for debug in chrome. f12 desktop [ysq].",
+            "manipulators": [
+                {
+                    "description": "fn + f1 = display_brightness_decrement",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f1",
+                        "modifiers": {
+                            "mandatory": [
+                                "fn"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "consumer_key_code": "display_brightness_decrement"
+                        }
+                    ]
+                },
+                {
+                    "description": "f1 = Iterm",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f1"
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Iterm.app'"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_unless",
+                            "bundle_identifiers": [
+                                "com.hegenberg.KeyboardCleanTool"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Hyper Edit [ysq]",
+            "manipulators": [
+                {
+                    "description": "enter = insert new line",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "right_command"
+                            ]
+                        },
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_unless",
+                            "bundle_identifiers": [
+                                "com.microsoft.VSCode",
+                                "com.jetbrains.WebStorm"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": " u = command + z",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "u",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "z",
+                            "modifiers": [
+                                "right_command"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "option + k = move line up in VSCode",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow",
+                            "modifiers": [
+                                "right_option"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "option + j = move line down in VSCode",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow",
+                            "modifiers": [
+                                "right_option"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Hyper Navigation Override [ysq]",
+            "manipulators": [
+                {
+                    "description": " h = left",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow"
+                        }
+                    ]
+                },
+                {
+                    "description": " l = right",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow"
+                        }
+                    ]
+                },
+                {
+                    "description": " k = up",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow"
+                        }
+                    ]
+                },
+                {
+                    "description": " j = down",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow"
+                        }
+                    ]
+                },
+                {
+                    "description": "w = alt + left",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "right_option"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "e = alt + right",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "right_option"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "o = command + right",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "right_command"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": " i = command + left",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "i",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "right_command"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Hyper Deletion Override [ysq]",
+            "manipulators": [
+                {
+                    "description": "delete = delete ahead of line",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "delete_or_backspace",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_or_backspace",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "equal + delete = delete rest of line ",
+                    "type": "basic",
+                    "from": {
+                        "simultaneous": [
+                            {
+                                "key_code": "equal_sign"
+                            },
+                            {
+                                "key_code": "delete_or_backspace"
+                            }
+                        ],
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "k",
+                            "modifiers": [
+                                "left_control"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": ". = delete a word after",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "period",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_forward",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "n = delete a word ahead",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_or_backspace",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "m = delete a char ahead",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "m",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_or_backspace"
+                        }
+                    ]
+                },
+                {
+                    "description": ", = delete a char after",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "comma",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_forward"
+                        }
+                    ]
+                },
+                {
+                    "description": "d = delete whole line",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "right_command"
+                            ]
+                        },
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "left_shift",
+                                "left_command"
+                            ]
+                        },
+                        {
+                            "key_code": "delete_or_backspace"
+                        }
+                    ]
+                },
+                {
+                    "description": "command + n = delete ahead of line",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command",
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "delete_or_backspace",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "command + . = delete rest of line",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "period",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command",
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "k",
+                            "modifiers": [
+                                "left_control"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Ysq Selection [ysq]",
+            "manipulators": [
+                {
+                    "description": "command + h = shift + left",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command",
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "command + h = shift + right",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command",
+                                "right_command",
+                                "right_control",
+                                "right_shift",
+                                "right_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Mac App Shortcuts [ysq]",
+            "manipulators": [
+                {
+                    "description": "幕布中划线: cmd+shift+x = cmd+enter",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "x",
+                        "modifiers": {
+                            "mandatory": [
+                                "shift",
+                                "left_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "return_or_enter",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com.mubu.desktop$"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "幕布上移一行: option+up = cmd+shift+up",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "up_arrow",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow",
+                            "modifiers": [
+                                "left_command",
+                                "left_shift"
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com.mubu.desktop$"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "description": "幕布下移一行: option+down = cmd+shift+down",
+                    "type": "basic",
+                    "from": {
+                        "key_code": "down_arrow",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow",
+                            "modifiers": [
+                                "left_command",
+                                "left_shift"
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com.mubu.desktop$"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
